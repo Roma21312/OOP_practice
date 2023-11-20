@@ -111,3 +111,14 @@ std::istream& operator>>(std::istream& in, PassengerTrain& passengerTrain)
 	passengerTrain.SetTravelDuration(travelDuration);
 	return in;
 }
+std::ostream& operator<<(std::ostream& os, PassengerTrain& train) {
+	 os << "Train ID: " << train.GetId() << "\n"
+		<< "Train Number: " << train.GetTrainNumber() << "\n"
+		<< "Name: " << train.GetName() << "\n"
+		<< "Departure Time: " << train.GetDepartureTime() << "\n"
+		<< "Departure Station: " << train.GetDepartureStation() << "\n"
+		<< "Destination Station: " << train.GetDestinationStation() << "\n"
+		<< "Route: " << train.GetRoute() << "\n"
+		<< "Travel Duration: " << train.GetTravelDuration() << " minutes";
+	return os;
+}

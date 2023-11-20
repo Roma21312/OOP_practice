@@ -39,4 +39,5 @@ public:
 	void SetTravelDuration(int);
 
 	friend std::istream& operator>>(std::istream& in, PassengerTrain& passengerTrain);
+	friend std::ostream& operator<<(std::ostream& os, PassengerTrain& train);
 };
