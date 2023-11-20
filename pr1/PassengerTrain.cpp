@@ -5,63 +5,109 @@ using namespace std;
 
 PassengerTrain::PassengerTrain() {
 	id = 0;
-	number = 0;
-	time = "none";
-	departure = "none";
-	appointment = "none";
-	duration = 0;
-	places = 0;
+	trainNumber = 0;
+	name = "none";
+	departureTime = "none";
+	departureStation = "none";
+	destinationStation = "none";
+	route = 0;
+	travelDuration = 0;
 }
 
-PassengerTrain::PassengerTrain(int id, int number, string time, string departure, string appointment, int duration, int places) {
+PassengerTrain::PassengerTrain(int id, int trianNumber, string name, string departureTime, string departureStation, string destinationStation, int route, int travelDuration) {
 	this->id = id;
-	this->number = number;
-	this->time = time;
-	this->departure = departure;
-	this->appointment = appointment;
-	this->duration = duration;
-	this->places = places;
+	this->trainNumber = trainNumber;
+	this->name;
+	this->departureTime = departureTime;
+	this->departureStation = departureStation;
+	this->destinationStation = destinationStation;
+	this->route = route;
+	this->travelDuration = travelDuration;
 }
 
 int PassengerTrain::GetId () {
 	return id;
 }
-int PassengerTrain::GetNumber() {
-	return number;
+int PassengerTrain::GetTrainNumber() {
+	return trainNumber;
 }
-string PassengerTrain::GetTime() {
-	return time;
+string PassengerTrain::GetName() {
+	return name;
 }
-string PassengerTrain::GetDeparture() {
-	return departure;
+string PassengerTrain::GetDepartureTime() {
+	return departureTime;
 }
-string PassengerTrain::GetAppointment() {
-	return appointment;
+string PassengerTrain::GetDepartureStation() {
+	return departureStation;
 }
-int PassengerTrain::GetDuration() {
-	return duration;
+string PassengerTrain::GetDestinationStation() {
+	return destinationStation;
 }
-int PassengerTrain::GetPlaces() {
-	return places;
+int PassengerTrain::GetRoute() {
+	return route;
+}
+int PassengerTrain::GetTravelDuration() {
+	return travelDuration;
 }
 void PassengerTrain::SetId(int) {
 	this->id = id;
 }
-void PassengerTrain::SetNumber(int) {
-	this->number = number;
+void PassengerTrain::SetTrainNumber(int) {
+	this->trainNumber = trainNumber;
 }
-void PassengerTrain::SetTime(string) {
-	this->time = time;
+void PassengerTrain::SetName(string) {
+	this->name= name;
 }
-void PassengerTrain::SetDeparture(string) {
-	this->departure = departure;
+void PassengerTrain::SetDepartureTime(string) {
+	this->departureTime = departureTime;
 }
-void PassengerTrain::SetAppointment(string) {
-	this->appointment = appointment;
+void PassengerTrain::SetDepartureStation(string) {
+	this->departureStation = departureStation;
 }
-void PassengerTrain::SetDuration(int) {
-	this->duration = duration;
+void PassengerTrain::SetDestinationStation(string) {
+	this->destinationStation = destinationStation;
 }
-void PassengerTrain::SetPlaces(int) {
-	this->places = places;
+void PassengerTrain::SetRoute(int) {
+	this->route = route;
+}
+void PassengerTrain::SetTravelDuration(int) {
+	this->travelDuration = travelDuration;
+}
+
+std::istream& operator>>(std::istream& in, PassengerTrain& passengerTrain)
+{
+	int id;
+	int trainNumber;
+	std::string name;
+	std::string departureTime;
+	std::string departureStation;
+	std::string destinationStation;
+	int route;
+	int travelDuration;
+	std::cout << "Enter train id: ";
+	in >> id;
+	std::cout << "Enter train number: ";
+	cin >> trainNumber;
+	std::cout << "Enter train name: ";
+	in.ignore();
+	getline(in, name);
+	std::cout << "Enter departure time: ";
+	getline(in, departureTime);
+	std::cout << "Enter departure station: ";
+	getline(in, departureStation);
+	std::cout << "Enter destination station: ";
+	getline(in, destinationStation);
+	std::cout << "Enter route: ";
+	cin >> route;
+	std::cout << "Enter travel duration: ";
+	in >> travelDuration;
+	passengerTrain.SetId(id);
+	passengerTrain.SetTrainNumber(trainNumber);
+	passengerTrain.SetName(name);
+	passengerTrain.SetDepartureTime(departureTime);
+	passengerTrain.SetDepartureStation(departureStation);
+	passengerTrain.SetDestinationStation(destinationStation);
+	passengerTrain.SetRoute(route);
+	passengerTrain.SetTravelDuration(travelDuration);
+	return in;
 }

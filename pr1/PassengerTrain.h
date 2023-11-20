@@ -7,28 +7,36 @@ class PassengerTrain
 {
 private:
 	int id;
-	int number;
-	string time;
-	string departure;
-	string appointment;
-	int duration;
-	int places;
+	int trainNumber;
+	string name;
+	string departureTime;
+	string departureStation;
+	string destinationStation;
+	int route;
+	int travelDuration;
 public:
 
+	PassengerTrain();
+	PassengerTrain(int, int, string, string, string, string, int, int);
+	~PassengerTrain() {}
+
 	int GetId();
-	int GetNumber();
-	string GetTime();
-	string GetDeparture();
-	string GetAppointment();
-	int GetDuration();
-	int GetPlaces();
+	int GetTrainNumber();
+	string GetName();
+	string GetDepartureTime();
+	string GetDepartureStation();
+	string GetDestinationStation();
+	int GetRoute();
+	int GetTravelDuration();
 
 	void SetId(int);
-	void SetNumber(int);
-	void SetTime(string);
-	void SetDeparture(string);
-	void SetAppointment(string);
-	void SetDuration(int);
-	void SetPlaces(int);
-};
+	void SetTrainNumber(int);
+	void SetName(string);
+	void SetDepartureTime(string);
+	void SetDepartureStation(string);
+	void SetDestinationStation(string);
+	void SetRoute(int);
+	void SetTravelDuration(int);
 
+	friend std::istream& operator>>(std::istream& in, PassengerTrain& passengerTrain);
+};
