@@ -122,3 +122,16 @@ std::ostream& operator<<(std::ostream& os, PassengerTrain& train) {
 		<< "Travel Duration: " << train.GetTravelDuration() << " minutes";
 	return os;
 }
+bool operator ==(PassengerTrain& other, PassengerTrain& other2) {
+	return (
+		other2.GetId() == other.GetId() &&
+		other2.GetTrainNumber() == other.GetTrainNumber() &&
+		other2.GetName() == other.GetName() &&
+		other2.GetDepartureTime() == other.GetDepartureTime() &&
+		other2.GetDepartureStation() == other.GetDepartureStation() &&
+		other2.GetDestinationStation() == other.GetDestinationStation()
+		&&
+		other2.GetRoute() == other.GetRoute() && 
+		other2.GetTravelDuration() == other.GetTravelDuration()
+		);
+}

@@ -40,4 +40,5 @@ public:
 
 	friend std::istream& operator>>(std::istream& in, PassengerTrain& passengerTrain);
 	friend std::ostream& operator<<(std::ostream& os, PassengerTrain& train);
+	friend bool operator == (PassengerTrain& other, PassengerTrain& other2);
 };
