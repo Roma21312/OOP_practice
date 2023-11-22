@@ -11,3 +11,4 @@ int main()
 	PassengerTransport b;
 	Plain c;
 }
+

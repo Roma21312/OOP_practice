@@ -27,4 +27,6 @@ public:
 	friend istream& operator>>(istream& in, PassengerTrain& passengerTrain);
 	friend ostream& operator<<(ostream& os, PassengerTrain& train);
 	friend bool operator == (PassengerTrain& other, PassengerTrain& other2);
+
+	void display() override;
 };

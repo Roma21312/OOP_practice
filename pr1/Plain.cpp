@@ -20,3 +20,8 @@ int Plain::GetFlightNumber() {
 void Plain::SetFlightNumber(int) {
 	this->flightNumber = flightNumber;
 }
+
+void Plain::display()
+{
+	cout << "Flight number: " << flightNumber << endl;
+}

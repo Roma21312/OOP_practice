@@ -13,7 +13,6 @@ private:
 	int numberSeats;
 	int travelDuration;
 public:
-
 	PassengerTransport();
 	PassengerTransport(int, string, string, string, int, int);
 	~PassengerTransport() {}
@@ -32,6 +31,8 @@ public:
 	void SetNumberSeats(int);
 	void SetTravelDuration(int);
 
-	friend istream& operator>>(istream& in, PassengerTrain& passengerTrain);
-	friend ostream& operator<<(ostream& os, PassengerTrain& train);
+	friend istream& operator>>(istream& in, PassengerTransport& passengerTransport);
+	friend ostream& operator<<(ostream& os, PassengerTransport& transport);
+
+	virtual void display() = 0;
 };

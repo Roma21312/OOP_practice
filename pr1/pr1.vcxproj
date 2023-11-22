@@ -140,11 +140,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="PassengerTrain.cpp" />
+    <ClCompile Include="PassengerTransport.cpp" />
+    <ClCompile Include="Plain.cpp" />
     <ClCompile Include="pr1.cpp" />
     <ClCompile Include="two.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PassengerTrain.h" />
+    <ClInclude Include="PassengerTransport.h" />
+    <ClInclude Include="Plain.h" />
     <ClInclude Include="two.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -99,3 +99,10 @@ bool operator ==(PassengerTrain& other, PassengerTrain& other2) {
 		other2.GetTravelDuration() == other.GetTravelDuration()
 		);
 }
+
+void PassengerTrain::display()
+{
+	cout << "Train number: " << trainNumber << endl;
+	cout << "Name: " << name << endl;
+	cout << "Route: " << route << endl;
+}

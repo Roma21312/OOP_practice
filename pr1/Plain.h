@@ -17,4 +17,5 @@ public:
 	int GetFlightNumber();
 
 	void SetFlightNumber(int);
+	void display() override;
 };
