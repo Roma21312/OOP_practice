@@ -1,0 +1,14 @@
+release/PassengerTrain.o
+release/PassengerTransport.o
+release/Plain.o
+release/dialogplain.o
+release/dialogtrain.o
+release/main.o
+release/mainwindow.o
+release/plainlist.o
+release/trainlist.o
+release/moc_dialogplain.o
+release/moc_dialogtrain.o
+release/moc_mainwindow.o
+release/moc_plainlist.o
+release/moc_trainlist.o
