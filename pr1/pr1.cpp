@@ -3,38 +3,39 @@
 #include "PassengerTrain.h"
 #include "PassengerTransport.h"
 #include "Plain.h"
+#include "Vector.h"
 
 using namespace std;
+
+int menu()
+{
+    int input;
+    cout << "Виберіть тип транспорту, який ви хочете створити:\n";
+    cout << "1. Пасажирський поїзд\n";
+    cout << "2. Літак\n";
+    cin >> input;
+    return input;
+}
 
 int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    PassengerTransport* passengerTransports[5];
+    int const size = 1;
+    Vector<PassengerTransport*> passengerTransports;
 
         for (int i = 0; i < 5; i++) {
-            int choice = menu();
-
-            switch (choice) {
-            case 1: {
+            if (menu() == 1) {
                 PassengerTrain* train = new PassengerTrain();
                 cin >> *train;
-                passengerTransports[i] = train;
-                break;
+                passengerTransports.push_back(train);
             }
-            case 2: {
+            else {
                 Plain* plain = new Plain();
                 cin >> *plain;
-                passengerTransports[i] = plain;
-                break;
+                passengerTransports.push_back(plain);
             }
-            default:
-                {
-                break;
-                }
-            }
-
-            passengerTransports[i]->display();
+            cout << *passengerTransports[i] << endl;
         }
 
         for (int i = 0; i < 5; i++)
@@ -43,14 +44,4 @@ int main()
         }
 
         return 0;
-}
-
-int menu() 
-{
-    int choice;
-    cout << "Виберіть тип транспорту, який ви хочете створити:\n";
-    cout << "1. Пасажирський поїзд\n";
-    cout << "2. Літак\n";
-    cin >> choice;
-    return choice;
 }
