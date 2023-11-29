@@ -9,6 +9,8 @@
 #include <time.h>
 #include <algorithm>
 #include <typeinfo>
+#include <list>
+#include <map>
 
 using namespace std;
 
@@ -26,7 +28,7 @@ int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-
+    /*
     srand(time(0));
 
 
@@ -76,7 +78,7 @@ int main()
         cout << "1. Добавити поїзд" << endl;
         cout << "2. Добавити літак" << endl;
         cout << "3. Вихід" << endl;
-        cout << "Введіть свій вибір: ";
+        cout << "Введіть свій вибір";
         cin >> choice;
 
         switch (choice) {
@@ -96,7 +98,7 @@ int main()
             cout << "Вихід" << endl;
             break;
         default:
-            cout << "Невірний вибір" << endl;
+            cout << "Невірний вибір." << endl;
             break;
         }
     } while (choice != 0);
@@ -120,4 +122,106 @@ int main()
     for (const auto& passengerTransport : newPassengerTransportVector) {
         cout << *passengerTransport << endl;
     }
+    */
+    srand(time(0));
+
+    list<int> firstList;
+    list<int> secondList;
+
+    for (int i = 0; firstList.size() < 10; i++)
+    {
+        int Random = rand() % 100;
+        if (Random % 2 == 1)
+            firstList.push_back(Random);
+    }
+
+    for (int i = 0; secondList.size() < 10; i++)
+    {
+        int Random = rand() % 100;
+        if (Random % 2 == 0)
+            secondList.push_back(Random);
+    }
+
+    firstList.sort();
+    secondList.sort();
+
+    list<int> thirdList(firstList.size() + secondList.size());
+    merge(firstList.begin(), firstList.end(), secondList.begin(), secondList.end(), back_inserter(thirdList));
+
+    cout << "Перший список:" << endl;
+
+    for (const auto& element : firstList)
+    {
+        cout << element << endl;
+    }
+
+    cout << "Другий список:" << endl;
+
+    for (const auto& element : secondList)
+    {
+        cout << element << endl;
+    }
+
+    cout << "Третій список:" << endl;
+
+    for (const auto& element : thirdList)
+    {
+        cout << element << endl;
+    }
+
+    map<int, PassengerTransport*> passengerTransportMap;
+
+    int choice;
+    int idCounter = 1;
+
+    do {
+        cout << "1. Добавити поїзд" << endl;
+        cout << "2. Добавити літак" << endl;
+        cout << "3. Відобразити все" << endl;
+        cout << "4. Відобразити за ID" << endl;
+        cout << "5. Вихід" << endl;
+        cout << "Введіть свій вибір";
+        cin >> choice;
+
+        switch (choice) {
+        case 1: {
+            PassengerTrain* passengerTrain = new PassengerTrain();
+            cin >> *passengerTrain;
+            passengerTransportMap[idCounter++] = passengerTrain;
+            break;
+        }
+        case 2: {
+            Plain* plain = new Plain();
+            cin >> *plain;
+            passengerTransportMap[idCounter++] = plain;
+            break;
+        }
+        case 3:
+            for (const auto& pair : passengerTransportMap) {
+                cout << "ID: " << pair.first << "\n" << *(pair.second) << "\n";
+            }
+            break;
+        case 4: {
+            int idToDisplay;
+            cout << "Введіть ID для виводу: ";
+            cin >> idToDisplay;
+
+            auto it = passengerTransportMap.find(idToDisplay);
+            if (it != passengerTransportMap.end()) {
+                cout << "ID: " << it->first << "\n" << *(it->second) << "\n";
+            }
+            else {
+                cout << "Об'єкт з ID " << idToDisplay << " не знайдено.\n";
+            }
+            break;
+        }
+        case 5:
+            cout << "Вихід.\n";
+            break;
+        default:
+            cout << "Невірний вибір.\n";
+            break;
+        }
+
+    } while (choice != 0);
 }
