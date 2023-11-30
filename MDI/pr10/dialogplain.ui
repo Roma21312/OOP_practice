@@ -92,13 +92,7 @@
           <widget class="QLineEdit" name="TravelDurationLineEdit_2"/>
          </item>
          <item>
-          <widget class="QLineEdit" name="TrainNumberLineEdit_2"/>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="NameLineEdit_2"/>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="FlightNumberLineEdit_2"/>
+          <widget class="QLineEdit" name="NumberLineEdit_2"/>
          </item>
         </layout>
        </item>

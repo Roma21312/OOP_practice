@@ -5,30 +5,56 @@
 #include <QListWidgetItem>
 #include <QString>
 
-TrainList::TrainList(QWidget *parent) :
+#include "dbmanager.h"
+#include "sqlitedbmanager.h"
+
+#include <QSqlTableModel>
+
+TrainList::TrainList(DBManager* dbManager, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::TrainList)
+    ui(new Ui::TrainList),
+    dbManager(dbManager)
 {
     ui->setupUi(this);
+    this->setupModel("trains",
+                     QStringList() << tr("id")
+                                   << tr("departurePoint")
+                                   << tr("destinationPoint")
+                                   << tr("departureTime")
+                                   << tr("numberSeats")
+                                   << tr("travelDuration")
+                                   << tr("trainNumber")
+                                   << tr("name")
+                                   << tr("route")
+                     );
+
+    this->createUI();
 }
 
 TrainList::~TrainList()
 {
     delete ui;
+    if (model)
+        delete model;
 }
 
-void TrainList::addItem(PassengerTrain* train){
-    QListWidgetItem* item = new QListWidgetItem();
-    item->setText(QString("Id: %1, DeparturePoint: %2, DestinationPoint: %3, DepartureTime: %4, NumberSeats: %5, TravelDuration: %6, TrainNumber: %7, Name: %8, Route: %9")
-                      .arg(train->GetId())
-                      .arg(QString::fromStdString(train->GetDeparturePoint()))
-                      .arg(QString::fromStdString(train->GetDestinationPoint()))
-                      .arg(QString::fromStdString(train->GetDepartureTime()))
-                      .arg(train->GetNumberSeats())
-                      .arg(train->GetTravelDuration())
-                      .arg(train->GetTrainNumber())
-                      .arg(QString::fromStdString(train->GetName()))
-                      .arg(train->GetRoute())
-                  );
-    ui->listWidget->addItem(item);
+void TrainList::setupModel(const QString& tableName, const QStringList& headers) {
+    model = new QSqlTableModel(this, dbManager->getDB());
+    model->setTable(tableName);
+
+    for (int i = 0, j = 0; i < model->columnCount(); i++, j++) {
+        model->setHeaderData(i, Qt::Horizontal, headers[j]);
+    }
+    model->setSort(0, Qt::AscendingOrder);
 }
+void TrainList::createUI() {
+    ui->tableView->setModel(model);
+    ui->tableView->setColumnHidden(0, true);
+    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tableView->resizeColumnsToContents();
+    ui->tableView->setEditTriggers(QAbstractItemView::DoubleClicked);
+    ui->tableView->horizontalHeader()->setStretchLastSection(true);
+
+    model->select();
+};

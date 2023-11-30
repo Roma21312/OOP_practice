@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,16 +17,19 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     plainlist.cpp \
+    sqlitedbmanager.cpp \
     trainlist.cpp
 
 HEADERS += \
     PassengerTrain.h \
     PassengerTransport.h \
     Plain.h \
+    dbmanager.h \
     dialogplain.h \
     dialogtrain.h \
     mainwindow.h \
     plainlist.h \
+    sqlitedbmanager.h \
     trainlist.h
 
 FORMS += \

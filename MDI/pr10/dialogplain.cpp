@@ -3,10 +3,14 @@
 #include "Plain.h"
 #include "PassengerTransport.h"
 #include <QMessageBox>
+#include "dbmanager.h"
+#include "sqlitedbmanager.h"
+#include <QDialog>
 
-DialogPlain::DialogPlain(QWidget *parent) :
+DialogPlain::DialogPlain(DBManager* dbManager, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::DialogPlain)
+    ui(new Ui::DialogPlain),
+    dbManager(dbManager)
 {
     ui->setupUi(this);
 }
@@ -35,7 +39,7 @@ void DialogPlain::on_pushButton_2_clicked()
     else if(ui->TravelDurationLineEdit_2->text().isEmpty()) {
         QMessageBox::information(this, tr("Помилка"), tr("Потрібно заповнити усі обов’язкові поля"));
     }
-    else if(ui->FlightNumberLineEdit_2->text().isEmpty()) {
+    else if(ui->NumberLineEdit_2->text().isEmpty()) {
         QMessageBox::information(this, tr("Помилка"), tr("Потрібно заповнити усі обов’язкові поля"));
     }
     else {
@@ -45,7 +49,7 @@ void DialogPlain::on_pushButton_2_clicked()
                                                    ui->DepartureTimeLineEdit_2->text().toStdString(),
                                                    ui->NumberSeatsLineEdit_2->text().toInt(),
                                                    ui->TravelDurationLineEdit_2->text().toInt(),
-                                                   ui->FlightNumberLineEdit_2->text().toInt()
+                                                   ui->NumberLineEdit_2->text().toInt()
                                                    );
         emit plainCreated(plain);
         this->accept();

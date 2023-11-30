@@ -41,9 +41,7 @@ public:
     QLineEdit *DepartureTimeLineEdit_2;
     QLineEdit *NumberSeatsLineEdit_2;
     QLineEdit *TravelDurationLineEdit_2;
-    QLineEdit *TrainNumberLineEdit_2;
-    QLineEdit *NameLineEdit_2;
-    QLineEdit *FlightNumberLineEdit_2;
+    QLineEdit *NumberLineEdit_2;
     QVBoxLayout *verticalLayout_8;
     QPushButton *pushButton_2;
 
@@ -130,20 +128,10 @@ public:
 
         verticalLayout_6->addWidget(TravelDurationLineEdit_2);
 
-        TrainNumberLineEdit_2 = new QLineEdit(DialogPlain);
-        TrainNumberLineEdit_2->setObjectName(QString::fromUtf8("TrainNumberLineEdit_2"));
+        NumberLineEdit_2 = new QLineEdit(DialogPlain);
+        NumberLineEdit_2->setObjectName(QString::fromUtf8("NumberLineEdit_2"));
 
-        verticalLayout_6->addWidget(TrainNumberLineEdit_2);
-
-        NameLineEdit_2 = new QLineEdit(DialogPlain);
-        NameLineEdit_2->setObjectName(QString::fromUtf8("NameLineEdit_2"));
-
-        verticalLayout_6->addWidget(NameLineEdit_2);
-
-        FlightNumberLineEdit_2 = new QLineEdit(DialogPlain);
-        FlightNumberLineEdit_2->setObjectName(QString::fromUtf8("FlightNumberLineEdit_2"));
-
-        verticalLayout_6->addWidget(FlightNumberLineEdit_2);
+        verticalLayout_6->addWidget(NumberLineEdit_2);
 
 
         horizontalLayout_4->addLayout(verticalLayout_6);

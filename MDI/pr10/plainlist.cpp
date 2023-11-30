@@ -5,28 +5,52 @@
 #include <QListWidgetItem>
 #include <QString>
 
-PlainList::PlainList(QWidget *parent) :
+#include "dbmanager.h"
+#include "sqlitedbmanager.h"
+
+#include <QSqlTableModel>
+
+PlainList::PlainList(DBManager* dbManager, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::PlainList)
+    ui(new Ui::PlainList),
+    dbManager(dbManager)
 {
     ui->setupUi(this);
+    this->setupModel("buses",
+                     QStringList() << tr("id")
+                      << tr("departurePoint")
+                      << tr("destinationPoint")
+                      << tr("departureTime")
+                      << tr("numberSeats")
+                      << tr("travelDuration")
+                      << tr("flightNumber")
+                     );
+    this->createUI();
 }
-
 PlainList::~PlainList()
 {
     delete ui;
+    if (model)
+        delete model;
 }
 
-void PlainList::addItem(Plain* plain){
-    QListWidgetItem* item = new QListWidgetItem();
-    item->setText(QString("Id: %1, DeparturePoint: %2, DestinationPoint: %3, DepartureTime: %4, NumberSeats: %5, TravelDuration: %6, FligtNumber: %7")
-                      .arg(plain->GetId())
-                      .arg(QString::fromStdString(plain->GetDeparturePoint()))
-                      .arg(QString::fromStdString(plain->GetDestinationPoint()))
-                      .arg(QString::fromStdString(plain->GetDepartureTime()))
-                      .arg(plain->GetNumberSeats())
-                      .arg(plain->GetTravelDuration())
-                      .arg(plain->GetFlightNumber())
-                  );
-    ui->listWidget->addItem(item);
+void PlainList::setupModel(const QString& tableName, const QStringList& headers) {
+    model = new QSqlTableModel(this, dbManager->getDB());
+    model->setTable(tableName);
+    for (int i = 0, j = 0; i < model->columnCount(); i++, j++) {
+        model->setHeaderData(i, Qt::Horizontal, headers[j]);
+    }
+    model->setSort(0, Qt::AscendingOrder);
+}
+
+void PlainList::createUI() {
+    ui->tableView->setModel(model);
+    ui->tableView->setColumnHidden(0, true);
+    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tableView->resizeColumnsToContents();
+    ui->tableView->setEditTriggers(QAbstractItemView::DoubleClicked);
+    ui->tableView->horizontalHeader()->setStretchLastSection(true);
+
+    model->select();
 }

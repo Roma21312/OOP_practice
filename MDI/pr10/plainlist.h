@@ -5,6 +5,13 @@
 
 #include "Plain.h"
 
+#include "dbmanager.h"
+#include "sqlitedbmanager.h"
+
+class QSqlTableModel;
+
+class DBManager;
+
 namespace Ui {
 class PlainList;
 }
@@ -14,14 +21,18 @@ class PlainList : public QDialog
     Q_OBJECT
 
 public:
-    explicit PlainList(QWidget *parent = nullptr);
+    explicit PlainList(DBManager* dbManager, QWidget *parent = nullptr);
     ~PlainList();
 
 private:
     Ui::PlainList *ui;
 
-public slots:
-    void addItem(Plain * plain);
+    DBManager* dbManager;
+    QSqlTableModel* model;
+
+    void setupModel(const QString& tableName, const QStringList& headers);
+
+    void createUI();
 };
 
 #endif // PLAINLIST_H

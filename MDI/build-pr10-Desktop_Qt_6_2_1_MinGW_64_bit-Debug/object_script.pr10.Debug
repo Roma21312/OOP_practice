@@ -6,6 +6,7 @@ debug/dialogtrain.o
 debug/main.o
 debug/mainwindow.o
 debug/plainlist.o
+debug/sqlitedbmanager.o
 debug/trainlist.o
 debug/moc_dialogplain.o
 debug/moc_dialogtrain.o

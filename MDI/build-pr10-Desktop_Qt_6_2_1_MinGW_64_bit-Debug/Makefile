@@ -210,6 +210,7 @@ Makefile: ../pr10/pr10.pro C:/Qt/6.2.1/mingw81_64/mkspecs/win32-g++/qmake.conf C
 		../pr10/pr10.pro \
 		C:/Qt/6.2.1/mingw81_64/lib/Qt6Widgets.prl \
 		C:/Qt/6.2.1/mingw81_64/lib/Qt6Gui.prl \
+		C:/Qt/6.2.1/mingw81_64/lib/Qt6Sql.prl \
 		C:/Qt/6.2.1/mingw81_64/lib/Qt6Core.prl \
 		C:/Qt/6.2.1/mingw81_64/lib/Qt6EntryPoint.prl \
 		C:/Qt/6.2.1/mingw81_64/mkspecs/features/build_pass.prf
@@ -354,6 +355,7 @@ C:/Qt/6.2.1/mingw81_64/mkspecs/features/lex.prf:
 ../pr10/pr10.pro:
 C:/Qt/6.2.1/mingw81_64/lib/Qt6Widgets.prl:
 C:/Qt/6.2.1/mingw81_64/lib/Qt6Gui.prl:
+C:/Qt/6.2.1/mingw81_64/lib/Qt6Sql.prl:
 C:/Qt/6.2.1/mingw81_64/lib/Qt6Core.prl:
 C:/Qt/6.2.1/mingw81_64/lib/Qt6EntryPoint.prl:
 C:/Qt/6.2.1/mingw81_64/mkspecs/features/build_pass.prf:

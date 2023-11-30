@@ -4,15 +4,20 @@
 #include <QDialog>
 #include <QLabel>
 #include <QLineEdit>
+#include <QTextStream>
+#include <QtDebug>
 
 #include "dialogtrain.h"
 #include "trainlist.h"
 #include "dialogplain.h"
 #include "plainlist.h"
+#include "dbmanager.h"
+#include "sqlitedbmanager.h"
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(DBManager* dbManager, QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow),
+      dbManager(dbManager)
 {
     ui->setupUi(this);
 
@@ -21,18 +26,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     dialogPlain = new DialogPlain(this);
     dialogPlain->setModal(true);
-
-    trainList = new TrainList(this);
-    trainList->setModal(false);
-
-    plainList = new PlainList(this);
-    plainList->setModal(false);
-
-    connect(dialogTrain, &DialogTrain::trainCreated, this, &MainWindow::on_createObjectTrain);
-    connect(dialogPlain, &DialogPlain::plainCreated, this, &MainWindow::on_createObjectPlain);
-
-    connect(this, &MainWindow::trainCreated, trainList, &TrainList::addItem);
-    connect(this, &MainWindow::plainCreated, plainList, &PlainList::addItem);
 }
 
 MainWindow::~MainWindow()
@@ -45,26 +38,16 @@ void MainWindow::on_CreateTrainButton_clicked()
     dialogTrain->show();
 }
 
-void MainWindow::on_createObjectTrain(PassengerTrain* train)
-{
-    trains.push_back(train);
-    emit trainCreated(trains.back());
-}
-
 void MainWindow::on_TrainListButton_clicked()
 {
+    trainList = new TrainList(dbManager, this);
+    trainList->setModal(false);
     trainList->show();
 }
 
 void MainWindow::on_CreatePlainButton_clicked()
 {
     dialogPlain->show();
-}
-
-void MainWindow::on_createObjectPlain(Plain* plain)
-{
-    plains.push_back(plain);
-    emit plainCreated(plains.back());
 }
 
 void MainWindow::on_PlainListButton_clicked()
