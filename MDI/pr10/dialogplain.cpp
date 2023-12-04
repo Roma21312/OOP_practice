@@ -24,6 +24,7 @@ DialogPlain::~DialogPlain()
 
 void DialogPlain::on_pushButton_2_clicked()
 {
+    try {
         if (ui->IdLineEdit_2->text().isEmpty()
             || ui->DeparturePointLineEdit_2->text().isEmpty()
             || ui->DestinationPointLineEdit_2->text().isEmpty()
@@ -42,4 +43,9 @@ void DialogPlain::on_pushButton_2_clicked()
                              ui->FlightNumberLineEdit_2->text().toInt());
         dbManager->inserIntoTable(plain);
         this->accept();
+    } catch (const char *ex) {
+        QMessageBox::critical(this, "Eror", "The field must be filled");
+        qInfo() << "The field must be filled";
+        this->reject();
+    }
 }

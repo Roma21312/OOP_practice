@@ -1,0 +1,6 @@
+Debug: error insert into Trains (..\pr10\sqlitedbmanager.cpp:113, virtual bool SqliteDBManager::inserIntoTable(PassengerTrain&))
+Debug: "UNIQUE constraint failed: Trains.id Unable to fetch row" (..\pr10\sqlitedbmanager.cpp:114, virtual bool SqliteDBManager::inserIntoTable(PassengerTrain&))
+Debug: "INSERT INTO Trains (id, departurePoint, destinationPoint, departureTime, numberSeats, travelDuration, trainNumber, name, route) VALUES (:id, :departurePoint, :destinationPoint, :departureTime, :numberSeats, :travelDuration, :trainNumber, :name, :route)" (..\pr10\sqlitedbmanager.cpp:115, virtual bool SqliteDBManager::inserIntoTable(PassengerTrain&))
+Debug: error insert into Plains (..\pr10\sqlitedbmanager.cpp:134, virtual bool SqliteDBManager::inserIntoTable(Plain&))
+Debug: "UNIQUE constraint failed: Plains.id Unable to fetch row" (..\pr10\sqlitedbmanager.cpp:135, virtual bool SqliteDBManager::inserIntoTable(Plain&))
+Debug: "INSERT INTO Plains (id, departurePoint, destinationPoint, departureTime, numberSeats, travelDuration, flightNumber) VALUES (:id, :departurePoint, :destinationPoint, :departureTime, :numberSeats, :travelDuration, :flightNumber)" (..\pr10\sqlitedbmanager.cpp:136, virtual bool SqliteDBManager::inserIntoTable(Plain&))

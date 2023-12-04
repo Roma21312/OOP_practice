@@ -2,12 +2,12 @@
 #include "PassengerTrain.h"
 #include "Plain.h"
 
-#include <QObject>
-#include <QSqlQuery>
-#include <QSqlError>
-#include <QFile>
 #include <QDate>
 #include <QDebug>
+#include <QFile>
+#include <QObject>
+#include <QSqlError>
+#include <QSqlQuery>
 
 SqliteDBManager* SqliteDBManager::instance = nullptr;
 
@@ -44,6 +44,7 @@ bool SqliteDBManager::restoreDataBase() {
             return true;
         }
     } else {
+        qDebug() << "Не вдалось відновити базу даних";
         return false;
     }
 }
@@ -72,7 +73,9 @@ bool SqliteDBManager::createTables() {
                     "name TEXT NOT NULL, "
                     "route INTEGER NOT NULL"
                     " )"
-    )) {
+                    )) {
+        qDebug() << "DataBase: error of create Trains";
+        qDebug() << query.lastError().text();
         return false;
     }
     if (!query.exec("CREATE TABLE Plains ("
@@ -84,7 +87,9 @@ bool SqliteDBManager::createTables() {
                     "travelDuration INTEGER NOT NULL, "
                     "flightNumber INTEGER NOT NULL"
                     " )"
-    )) {
+                    )) {
+        qDebug() << "DataBase: error of create Plains";
+        qDebug() << query.lastError().text();
         return false;
     } else
         return true;
@@ -105,6 +110,9 @@ bool SqliteDBManager::inserIntoTable(PassengerTrain& train) {
     query.bindValue(":route", train.GetRoute());
 
     if (!query.exec()) {
+        qDebug() << "error insert into Trains";
+        qDebug() << query.lastError().text();
+        qDebug() << query.lastQuery();
         return false;
     } else
         return true;
@@ -123,6 +131,9 @@ bool SqliteDBManager::inserIntoTable(Plain& plain) {
     query.bindValue(":flightNumber", plain.GetFlightNumber());
 
     if (!query.exec()) {
+        qDebug() << "error insert into Plains";
+        qDebug() << query.lastError().text();
+        qDebug() << query.lastQuery();
         return false;
     } else
         return true;
