@@ -24,7 +24,7 @@ DialogTrain::~DialogTrain()
 
 void DialogTrain::on_pushButton_2_clicked()
 {
-    try {
+
         if (ui->IdLineEdit_2->text().isEmpty()
             || ui->DeparturePointLineEdit_2->text().isEmpty()
             || ui->DestinationPointLineEdit_2->text().isEmpty()
@@ -47,10 +47,4 @@ void DialogTrain::on_pushButton_2_clicked()
                 ui->RouteLineEdit_2->text().toInt());
         dbManager->inserIntoTable(train);
         this->accept();
-
-    } catch (const char *ex) {
-        QMessageBox::critical(this, "Eror", "The field must be filled");
-        qInfo() << "The field must be filled";
-        this->reject();
-    }
 }

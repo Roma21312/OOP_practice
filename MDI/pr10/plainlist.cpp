@@ -16,7 +16,7 @@ PlainList::PlainList(DBManager* dbManager, QWidget *parent) :
     dbManager(dbManager)
 {
     ui->setupUi(this);
-    this->setupModel("buses",
+    this->setupModel("plains",
                      QStringList() << tr("id")
                       << tr("departurePoint")
                       << tr("destinationPoint")
@@ -37,6 +37,7 @@ PlainList::~PlainList()
 void PlainList::setupModel(const QString& tableName, const QStringList& headers) {
     model = new QSqlTableModel(this, dbManager->getDB());
     model->setTable(tableName);
+
     for (int i = 0, j = 0; i < model->columnCount(); i++, j++) {
         model->setHeaderData(i, Qt::Horizontal, headers[j]);
     }

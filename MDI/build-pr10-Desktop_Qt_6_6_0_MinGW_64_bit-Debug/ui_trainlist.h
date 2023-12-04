@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'trainlist.ui'
 **
-** Created by: Qt User Interface Compiler version 6.2.1
+** Created by: Qt User Interface Compiler version 6.6.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -12,7 +12,8 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
-#include <QtWidgets/QListWidget>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
@@ -21,19 +22,19 @@ class Ui_TrainList
 {
 public:
     QVBoxLayout *verticalLayout;
-    QListWidget *listWidget;
+    QTableView *tableView;
 
     void setupUi(QDialog *TrainList)
     {
         if (TrainList->objectName().isEmpty())
-            TrainList->setObjectName(QString::fromUtf8("TrainList"));
+            TrainList->setObjectName("TrainList");
         TrainList->resize(738, 259);
         verticalLayout = new QVBoxLayout(TrainList);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        listWidget = new QListWidget(TrainList);
-        listWidget->setObjectName(QString::fromUtf8("listWidget"));
+        verticalLayout->setObjectName("verticalLayout");
+        tableView = new QTableView(TrainList);
+        tableView->setObjectName("tableView");
 
-        verticalLayout->addWidget(listWidget);
+        verticalLayout->addWidget(tableView);
 
 
         retranslateUi(TrainList);

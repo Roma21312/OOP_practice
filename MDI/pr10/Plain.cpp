@@ -17,7 +17,7 @@ int Plain::GetFlightNumber() {
 	return flightNumber;
 }
 
-void Plain::SetFlightNumber(int) {
+void Plain::SetFlightNumber(int flightNumber) {
 	this->flightNumber = flightNumber;
 }
 

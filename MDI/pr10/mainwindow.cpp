@@ -21,10 +21,10 @@ MainWindow::MainWindow(DBManager* dbManager, QWidget *parent)
 {
     ui->setupUi(this);
 
-    dialogTrain = new DialogTrain(this);
+    dialogTrain = new DialogTrain(dbManager, this);
     dialogTrain->setModal(true);
 
-    dialogPlain = new DialogPlain(this);
+    dialogPlain = new DialogPlain(dbManager, this);
     dialogPlain->setModal(true);
 }
 
@@ -45,12 +45,14 @@ void MainWindow::on_TrainListButton_clicked()
     trainList->show();
 }
 
+void MainWindow::on_PlainListButton_clicked()
+{
+    plainList = new PlainList(dbManager, this);
+    plainList->setModal(false);
+    plainList->show();
+}
+
 void MainWindow::on_CreatePlainButton_clicked()
 {
     dialogPlain->show();
-}
-
-void MainWindow::on_PlainListButton_clicked()
-{
-    plainList->show();
 }

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 6.2.1
+** Created by: Qt User Interface Compiler version 6.6.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -39,35 +39,35 @@ public:
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
-            MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
+            MainWindow->setObjectName("MainWindow");
         MainWindow->resize(603, 264);
         centralwidget = new QWidget(MainWindow);
-        centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        centralwidget->setObjectName("centralwidget");
         verticalLayout_2 = new QVBoxLayout(centralwidget);
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setObjectName("verticalLayout_2");
         verticalLayout = new QVBoxLayout();
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setObjectName("verticalLayout");
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer_2);
 
         CreateTrainButton = new QPushButton(centralwidget);
-        CreateTrainButton->setObjectName(QString::fromUtf8("CreateTrainButton"));
+        CreateTrainButton->setObjectName("CreateTrainButton");
 
         verticalLayout->addWidget(CreateTrainButton);
 
         CreatePlainButton = new QPushButton(centralwidget);
-        CreatePlainButton->setObjectName(QString::fromUtf8("CreatePlainButton"));
+        CreatePlainButton->setObjectName("CreatePlainButton");
 
         verticalLayout->addWidget(CreatePlainButton);
 
         TrainListButton = new QPushButton(centralwidget);
-        TrainListButton->setObjectName(QString::fromUtf8("TrainListButton"));
+        TrainListButton->setObjectName("TrainListButton");
 
         verticalLayout->addWidget(TrainListButton);
 
         PlainListButton = new QPushButton(centralwidget);
-        PlainListButton->setObjectName(QString::fromUtf8("PlainListButton"));
+        PlainListButton->setObjectName("PlainListButton");
 
         verticalLayout->addWidget(PlainListButton);
 
@@ -80,11 +80,11 @@ public:
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName(QString::fromUtf8("menubar"));
+        menubar->setObjectName("menubar");
         menubar->setGeometry(QRect(0, 0, 603, 20));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
+        statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
 
         retranslateUi(MainWindow);

@@ -15,7 +15,7 @@ PassengerTransport::PassengerTransport() {
 PassengerTransport::PassengerTransport(int id, string departurePoint, string destinationPoint, string departureTime, int numberSeats, int travelDuration) {
 	this->id = id;
 	this->departurePoint = departurePoint;
-	this->destinationPoint;
+    this->destinationPoint = destinationPoint;
 	this->departureTime = departureTime;
 	this->numberSeats = numberSeats;
 	this->travelDuration = travelDuration;
@@ -39,22 +39,22 @@ int PassengerTransport::GetNumberSeats() {
 int PassengerTransport::GetTravelDuration() {
 	return travelDuration;
 }
-void PassengerTransport::SetId(int) {
+void PassengerTransport::SetId(int id) {
 	this->id = id;
 }
-void PassengerTransport::SetDeparturePoint(string) {
+void PassengerTransport::SetDeparturePoint(string departurePoint) {
 	this->departurePoint = departurePoint;
 }
-void PassengerTransport::SetDestinationPoint(string) {
+void PassengerTransport::SetDestinationPoint(string destinationPoint) {
 	this->destinationPoint = destinationPoint;
 }
-void PassengerTransport::SetDepartureTime(string) {
+void PassengerTransport::SetDepartureTime(string departureTime) {
 	this->departureTime = departureTime;
 }
-void PassengerTransport::SetNumberSeats(int) {
+void PassengerTransport::SetNumberSeats(int numberSeats) {
 	this->numberSeats = numberSeats;
 }
-void PassengerTransport::SetTravelDuration(int) {
+void PassengerTransport::SetTravelDuration(int travelDuration) {
 	this->travelDuration = travelDuration;
 }
 

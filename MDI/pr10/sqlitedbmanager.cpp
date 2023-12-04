@@ -44,7 +44,6 @@ bool SqliteDBManager::restoreDataBase() {
             return true;
         }
     } else {
-        qDebug() << "Не вдалось відновити базу даних";
         return false;
     }
 }
@@ -74,11 +73,9 @@ bool SqliteDBManager::createTables() {
                     "route INTEGER NOT NULL"
                     " )"
     )) {
-        qDebug() << "DataBase: error of create Trains";
-        qDebug() << query.lastError().text();
         return false;
     }
-    if (!query.exec("CREATE TABLE Trains ("
+    if (!query.exec("CREATE TABLE Plains ("
                     "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                     "departurePoint TEXT NOT NULL, "
                     "destinationPoint TEXT NOT NULL, "
@@ -88,8 +85,6 @@ bool SqliteDBManager::createTables() {
                     "flightNumber INTEGER NOT NULL"
                     " )"
     )) {
-        qDebug() << "DataBase: error of create Trains";
-        qDebug() << query.lastError().text();
         return false;
     } else
         return true;
@@ -110,9 +105,6 @@ bool SqliteDBManager::inserIntoTable(PassengerTrain& train) {
     query.bindValue(":route", train.GetRoute());
 
     if (!query.exec()) {
-        qDebug() << "error insert into Trains";
-        qDebug() << query.lastError().text();
-        qDebug() << query.lastQuery();
         return false;
     } else
         return true;
@@ -131,9 +123,6 @@ bool SqliteDBManager::inserIntoTable(Plain& plain) {
     query.bindValue(":flightNumber", plain.GetFlightNumber());
 
     if (!query.exec()) {
-        qDebug() << "error insert into Plains";
-        qDebug() << query.lastError().text();
-        qDebug() << query.lastQuery();
         return false;
     } else
         return true;

@@ -13,7 +13,7 @@ PassengerTrain::PassengerTrain() : PassengerTransport() {
 PassengerTrain::PassengerTrain(int id, string departurePoint, string destinationPoint, string departureTime, int numberSeats, int travelDuration, int trainNumber, string name, int route)
 	: PassengerTransport(id, departurePoint, destinationPoint, departureTime, numberSeats, travelDuration) {
 	this->trainNumber = trainNumber;
-	this->name;
+    this->name = name;
 	this->route = route;
 }
 
@@ -28,14 +28,14 @@ int PassengerTrain::GetRoute() {
 	return route;
 }
 
-void PassengerTrain::SetTrainNumber(int) {
+void PassengerTrain::SetTrainNumber(int trainNumber) {
 	this->trainNumber = trainNumber;
 }
-void PassengerTrain::SetName(string) {
+void PassengerTrain::SetName(string name) {
 	this->name= name;
 }
-void PassengerTrain::SetRoute(int) {
-	this->route = route;
+void PassengerTrain::SetRoute(int route) {
+    this->route = route;
 }
 
 

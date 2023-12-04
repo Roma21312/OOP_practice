@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'plainlist.ui'
 **
-** Created by: Qt User Interface Compiler version 6.2.1
+** Created by: Qt User Interface Compiler version 6.6.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -12,7 +12,8 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
-#include <QtWidgets/QListWidget>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
@@ -21,19 +22,19 @@ class Ui_PlainList
 {
 public:
     QVBoxLayout *verticalLayout;
-    QListWidget *listWidget;
+    QTableView *tableView;
 
     void setupUi(QDialog *PlainList)
     {
         if (PlainList->objectName().isEmpty())
-            PlainList->setObjectName(QString::fromUtf8("PlainList"));
+            PlainList->setObjectName("PlainList");
         PlainList->resize(725, 300);
         verticalLayout = new QVBoxLayout(PlainList);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        listWidget = new QListWidget(PlainList);
-        listWidget->setObjectName(QString::fromUtf8("listWidget"));
+        verticalLayout->setObjectName("verticalLayout");
+        tableView = new QTableView(PlainList);
+        tableView->setObjectName("tableView");
 
-        verticalLayout->addWidget(listWidget);
+        verticalLayout->addWidget(tableView);
 
 
         retranslateUi(PlainList);
